@@ -197,17 +197,22 @@ $(document).ready(function () {
             type: 'GET',
             success: function (response) {
                 var notifications = JSON.parse(response);
+                const notificationList = $('#notification-list');
+                const notificationBadge = $('.notification-badge');
+                const noNotifications = $('#no-notifications');
+                
+                notificationList.empty();
+                
                 if (notifications.length > 0) {
-                    var notificationHtml = '<ul class="list-group list-group-flush">';
                     notifications.forEach(function (notif) {
-                        notificationHtml += `
-                            <li class="list-group-item">
+                        notificationList.append(`
+                            <div class="list-group-item">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <h6 class="mb-1">${notif.tarefa}</h6>
                                         <p class="mb-0 text-muted small">
                                             <i class="bi bi-person-fill me-1"></i>
-                                            Responsável: ${notif.responsavel || "Não atribuído"}
+                                            ${notif.responsavel || "Não atribuído"}
                                         </p>
                                     </div>
                                     <span class="badge bg-warning text-dark">
@@ -215,16 +220,16 @@ $(document).ready(function () {
                                         ${new Date(notif.data_vencimento).toLocaleDateString('pt-BR')}
                                     </span>
                                 </div>
-                            </li>
-                        `;
+                            </div>
+                        `);
                     });
-                    notificationHtml += '</ul>';
-
-                    $('#notification-list').html(notificationHtml);
-
-                    // Mostra o modal
-                    var notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
-                    notificationModal.show();
+                    
+                    // Atualiza apenas o badge com o número de notificações
+                    notificationBadge.removeClass('d-none').text(notifications.length);
+                    noNotifications.addClass('d-none');
+                } else {
+                    notificationBadge.addClass('d-none');
+                    noNotifications.removeClass('d-none');
                 }
             }
         });
@@ -233,7 +238,7 @@ $(document).ready(function () {
     // Verifica notificações quando a página carrega
     checkNotifications();
 
-    // Verifica notificaçes a cada 5 minutos
+    // Verifica notificações a cada 5 minutos
     setInterval(checkNotifications, 300000);
 
     // Atualizar as funções de exportação
