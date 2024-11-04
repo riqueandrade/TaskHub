@@ -599,3 +599,45 @@
     background-color: rgba(var(--bs-primaria-rgb), 0.08);
     border-radius: var(--borda-raio-p);
 }
+
+/* Estilos para o botão de limpar filtros */
+#clearFilters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    border: 1px solid var(--cor-cinza-escuro);
+    background-color: var(--cor-branca);
+    color: var(--cor-secundaria);
+    transition: all 0.2s ease;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#clearFilters i {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#clearFilters:hover {
+    background-color: var(--cor-perigo);
+    border-color: var(--cor-perigo);
+    color: var(--cor-branca);
+}
+
+#clearFilters:hover i {
+    transform: rotate(180deg);
+}
+
+/* Ajuste responsivo para o botão */
+@media (max-width: 768px) {
+    #clearFilters {
+        height: 35px;
+        margin-top: 0.5rem;
+    }
+    
+    #clearFilters i {
+        font-size: 1rem;
+    }
+}

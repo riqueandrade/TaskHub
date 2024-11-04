@@ -487,6 +487,22 @@ $(document).ready(function () {
             exportModal.show();
         });
     });
+
+    // Adicionar após as funções de filtro existentes
+
+    // Event listener para o botão de limpar filtros
+    $('#clearFilters').on('click', function() {
+        // Limpa o campo de busca
+        $('#searchTasks').val('');
+        
+        // Reseta os selects para a primeira opção
+        $('#filterPriority').val('');
+        $('#filterUser').val('');
+        $('#filterSector').val('');
+        
+        // Aplica os filtros (que agora estão vazios)
+        applyFilters();
+    });
 });
 
 // Explicação do código:
