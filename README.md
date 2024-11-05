@@ -99,12 +99,18 @@ project/
 │   ├── cadastro.js   # Lógica do cadastro
 │   └── nav.js        # Navegação
 ├── php/
-│   ├── db_connection.php
-│   ├── script.php
-│   ├── get_tasks.php
-│   └── ...
+│   ├── db_connection.php  # Conexão com o banco de dados
+│   ├── script.php         # Scripts principais
+│   ├── get_tasks.php      # Busca de tarefas
+│   ├── create_task.php    # Criação de tarefas
+│   ├── update_task.php    # Atualização de tarefas
+│   ├── delete_task.php    # Exclusão de tarefas
+│   ├── get_users.php      # Busca de usuários
+│   ├── create_user.php    # Criação de usuários
+│   ├── update_user.php    # Atualização de usuários
+│   └── delete_user.php    # Exclusão de usuários
 └── sql/
-    └── database_setup.sql
+    └── database_setup.sql # Script de criação do banco
 ```
 
 ## 📦 Instalação
